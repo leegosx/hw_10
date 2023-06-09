@@ -1,27 +1,25 @@
 from collections import UserDict
-
 class AddressBook(UserDict):
-    def __getitem__(self, key):
-        return self.data[key]
-    
-    def address_book(self, value):
-        return value in self.data.values()
-    
+    def add_record(self, record):
+        self.data[record.name.value] = record
+
 class Record:
     def __init__(self, name, phone=None):
         self.name = name
         if phone:
             self.phones = []
             self.phones.append(phone)
-    
+
 class Field:
-    pass
+    def __init__(self, value):
+        self.value = value
+
 
 class Name(Field):
-    def __init__(self, name):
-        self.name = name
+    pass
 
-class Phone():
+
+class Phone(Field):
     def __init__(self, name, phone=None):
         self.name = name
         self.phone = phone
